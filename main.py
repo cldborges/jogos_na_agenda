@@ -21,7 +21,7 @@ corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151'}
 
 dados = (liga_dos_campeoes, corinthians, selecao_brasileira, mundial_de_clubes, corinthians_fem)
-#dados = (corinthians_fem,)
+dados = (corinthians_fem, mundial_de_clubes)
 
 for dado in dados:
     if dado['tipo'] == 'competicao':

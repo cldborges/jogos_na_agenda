@@ -11,7 +11,7 @@ liga_dos_campeoes = {'nome': 'Liga dos Campeões', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?fase_in=0&equipa=0&id_edicao=155920'}
 corinthians = {'nome': 'Corinthians', 'tipo': 'time',
                      'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1&epoca_id=151'}
-CAN = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
+can = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=136090'}
 selecao_brasileira = {'nome': 'Brasil', 'tipo': 'time',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1&epoca_id=151'}

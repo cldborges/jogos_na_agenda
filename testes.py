@@ -1,6 +1,9 @@
 from selenium.webdriver.common.by import By
 from classes import *
 from selenium.common.exceptions import *
+from datetime import datetime, date
+
+print(date.today().strftime("%d/%m/%Y"))
 
 '''service = google_auth()
 
@@ -15,7 +18,7 @@ data_final = data_para_isoformat(data, hora, horas=+6) + 'Z'''
     print(event['id'])
     excluirEvento(service, event['id'])'''
 '''idEvento = eventos['items']['id']
-print(idEvento)'''
+print(idEvento)
 #excluirEvento(service, )
 
 #url = 'https://www.ogol.com.br/edition_matches.php?id_edicao=161104&fase_in&equipa=0&estado=&filtro=&op=calendario&page=5'
@@ -33,7 +36,7 @@ for jogo in jogos:
     except NoSuchElementException as exc:
         pass
 
-'''for i, jogo in enumerate(jogos):
+for i, jogo in enumerate(jogos):
     try:
         tv = jogo.find_element(By.CSS_SELECTOR, 'td.multimedia.right').text
         print(f'{i}, {tv}')

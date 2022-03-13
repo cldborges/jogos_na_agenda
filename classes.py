@@ -1,5 +1,7 @@
 # pip install python-dateutil
 
+from datetime import datetime, date
+
 def extrair_jogos(url):
     from selenium import webdriver
     from selenium.webdriver.common.by import By
@@ -52,14 +54,16 @@ def google_auth():
     return service
 
 
-def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv):
+def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo):
 
     from googleapiclient.errors import HttpError
+
+    hoje = date.today().strftime("%d/%m/%Y")
 
     try:
         event = {
             'summary': sumario,
-            'description': f'{competicao}: {fase} \n{tv}',
+            'description': f'{competicao}: {fase} \n{tv}\n\n\n\n\n{link_jogo}\nAtualizado em: {hoje}',
             'start': {
                 'dateTime': data_inicio,
                 'timeZone': 'America/Sao_Paulo',

@@ -21,7 +21,7 @@ corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151'}
 
 dados = (liga_dos_campeoes, corinthians, selecao_brasileira, mundial_de_clubes, corinthians_fem)
-dados = (corinthians_fem, mundial_de_clubes)
+#dados = (corinthians_fem, mundial_de_clubes)
 
 for dado in dados:
     if dado['tipo'] == 'competicao':
@@ -44,8 +44,7 @@ for dado in dados:
     
     service = google_auth()
     
-    for jogo in jogos:
-    
+    for jogo in jogos:  
         resultado = jogo.find_element(By.CSS_SELECTOR, 'td.result').text
         if resultado != '-' and resultado != 'vs':
             continue
@@ -85,6 +84,7 @@ for dado in dados:
                 pass
 
         sumario = time_casa + ' X ' + time_fora
+        link_jogo = jogo.find_element(By.CSS_SELECTOR, 'td.result > a').get_attribute('href')
         data_inicio = data_para_isoformat(data, hora, horas=-72)
         data_final = data_para_isoformat(data, hora, horas=+72)
     
@@ -96,4 +96,4 @@ for dado in dados:
     
         data_inicio = data_para_isoformat(data, hora)
         data_final = data_para_isoformat(data, hora, horas=+2)
-        criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv)
+        criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo)

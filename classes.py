@@ -54,7 +54,7 @@ def google_auth():
     return service
 
 
-def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo):
+def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId):
 
     from googleapiclient.errors import HttpError
 
@@ -63,7 +63,8 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
     try:
         event = {
             'summary': sumario,
-            'description': f'{competicao}: {fase} \n{tv}\n\n\n\n\n{link_jogo}\nAtualizado em: {hoje}',
+            'colorId': colorId,
+            'description': f'{competicao}: {fase}\n{tv}\n\n\n\n\n{link_jogo}\nAtualizado em: {hoje}',
             'start': {
                 'dateTime': data_inicio,
                 'timeZone': 'America/Sao_Paulo',

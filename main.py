@@ -6,22 +6,24 @@ from selenium.common.exceptions import *
 from classes import *
 
 corinthians_s20 = {'nome': 'Corinthians S20', 'tipo': 'time',
-                   'link': 'https://www.ogol.com.br/team_matches.php?id=27018&grp=1&epoca_id=151'}
+                   'link': 'https://www.ogol.com.br/team_matches.php?id=27018&grp=1&epoca_id=151', 'colorId': 1}
 liga_dos_campeoes = {'nome': 'Liga dos Campeões', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?fase_in=0&equipa=0&id_edicao=155920'}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?fase_in=0&equipa=0&id_edicao=155920', 'colorId': 9}
 corinthians = {'nome': 'Corinthians', 'tipo': 'time',
-                     'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1&epoca_id=151'}
+                     'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1&epoca_id=151', 'colorId': 8}
 can = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=136090'}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=136090', 'colorId': 10}
 selecao_brasileira = {'nome': 'Brasil', 'tipo': 'time',
-                      'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1&epoca_id=151'}
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1&epoca_id=151', 'colorId': 5}
 mundial_de_clubes = {'nome': 'Mundial de Clubes', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=159598'}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=159598', 'colorId': 9}
 corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
-                      'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151'}
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151', 'colorId': 4}
+nations_league = {'nome': 'Uefa Nation League', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=161165', 'colorId': 9}
 
-dados = (liga_dos_campeoes, corinthians, selecao_brasileira, mundial_de_clubes, corinthians_fem)
-#dados = (corinthians_fem, mundial_de_clubes)
+dados = (selecao_brasileira, liga_dos_campeoes, corinthians_s20, corinthians_fem, nations_league, corinthians)
+dados = (nations_league, corinthians)
 
 for dado in dados:
     if dado['tipo'] == 'competicao':
@@ -83,17 +85,18 @@ for dado in dados:
             except NoSuchElementException as exc:
                 pass
 
+        colorId = dado['colorId']
         sumario = time_casa + ' X ' + time_fora
         link_jogo = jogo.find_element(By.CSS_SELECTOR, 'td.result > a').get_attribute('href')
-        data_inicio = data_para_isoformat(data, hora, horas=-72)
-        data_final = data_para_isoformat(data, hora, horas=+72)
+        data_inicio = data_para_isoformat(data, hora, horas=-24)
+        data_final = data_para_isoformat(data, hora, horas=+24)
     
         eventos = listar_eventos(service, data_inicio, data_final)
         for evento in eventos:
-            if time_casa in evento[0] or time_fora in evento[0] or 'Vencedor' in evento[0]:
+            if time_casa + ' X' in evento[0] or 'X ' + time_fora in evento[0] or 'Vencedor' in evento[0]:
                 excluirEvento(service, evento[1])
                 print(f'{evento[0]} excluído.')
     
         data_inicio = data_para_isoformat(data, hora)
         data_final = data_para_isoformat(data, hora, horas=+2)
-        criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo)
+        criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId)

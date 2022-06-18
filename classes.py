@@ -1,13 +1,16 @@
 # pip install python-dateutil
 
 from datetime import datetime, date
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 
 def extrair_jogos(url):
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
 
 #   driver = webdriver.Chrome(r"C:\Users\Claudio\Google Drive\Python\chromedriver.exe")
-    driver = webdriver.Chrome()
+#    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(url)
     jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
     while len(jogos) == 0:

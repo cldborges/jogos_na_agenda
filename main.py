@@ -21,9 +21,11 @@ corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151', 'colorId': 4}
 nations_league = {'nome': 'Uefa Nation League', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=161165', 'colorId': 9}
+copa_america_f = {'nome': 'Copa América Feminina', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'colorId': 3}
 
-dados = (selecao_brasileira, liga_dos_campeoes, corinthians_s20, corinthians_fem, nations_league, corinthians)
-dados = (nations_league, corinthians)
+dados = (selecao_brasileira, liga_dos_campeoes, corinthians_s20, corinthians_fem, corinthians)
+dados = (copa_america_f, corinthians_fem)
 
 for dado in dados:
     if dado['tipo'] == 'competicao':
@@ -88,8 +90,8 @@ for dado in dados:
         colorId = dado['colorId']
         sumario = time_casa + ' X ' + time_fora
         link_jogo = jogo.find_element(By.CSS_SELECTOR, 'td.result > a').get_attribute('href')
-        data_inicio = data_para_isoformat(data, hora, horas=-24)
-        data_final = data_para_isoformat(data, hora, horas=+24)
+        data_inicio = data_para_isoformat(data, hora, horas=-30)
+        data_final = data_para_isoformat(data, hora, horas=+30)
     
         eventos = listar_eventos(service, data_inicio, data_final)
         for evento in eventos:

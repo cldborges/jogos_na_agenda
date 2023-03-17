@@ -6,26 +6,31 @@ from selenium.common.exceptions import *
 from classes import *
 
 corinthians_s20 = {'nome': 'Corinthians S20', 'tipo': 'time',
-                   'link': 'https://www.ogol.com.br/team_matches.php?id=27018&grp=1&epoca_id=151', 'colorId': 1}
+                   'link': 'https://www.ogol.com.br/team_matches.php?id=27018&grp=1', 'colorId': 1}
 liga_dos_campeoes = {'nome': 'Liga dos Campeões', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?fase_in=0&equipa=0&id_edicao=155920', 'colorId': 9}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'colorId': 9}
 corinthians = {'nome': 'Corinthians', 'tipo': 'time',
-                     'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1&epoca_id=151', 'colorId': 8}
+                     'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1', 'colorId': 8}
 can = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=136090', 'colorId': 10}
 selecao_brasileira = {'nome': 'Brasil', 'tipo': 'time',
-                      'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1&epoca_id=151', 'colorId': 5}
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1', 'colorId': 5}
 mundial_de_clubes = {'nome': 'Mundial de Clubes', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=159598', 'colorId': 9}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'colorId': 9}
 corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
-                      'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151', 'colorId': 4}
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1', 'colorId': 4}
 nations_league = {'nome': 'Uefa Nation League', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=161165', 'colorId': 9}
 copa_america_f = {'nome': 'Copa América Feminina', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'colorId': 3}
+copa_mundo= {'nome': 'Copa do Mundo', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=132894', 'colorId': 6}
 
-dados = (selecao_brasileira, liga_dos_campeoes, corinthians_s20, corinthians_fem, corinthians)
-dados = (copa_america_f, corinthians_fem)
+# dados = (corinthians_s20, liga_dos_campeoes, corinthians, can, selecao_brasileira, mundial_de_clubes, corinthians_fem, nations_league, copa_america_f, copa_mundo)
+dados = (corinthians_s20, liga_dos_campeoes, corinthians, mundial_de_clubes, corinthians_fem, nations_league, copa_america_f)
+dados = (selecao_brasileira, nations_league)
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 for dado in dados:
     if dado['tipo'] == 'competicao':
@@ -33,14 +38,14 @@ for dado in dados:
     else:
         jogos_por_pagina = 40
     url = dado['link']
-    jogos = extrair_jogos(url)
+    jogos = extrair_jogos(url, driver)
     page = 2
     
     if len(jogos) == jogos_por_pagina:
         njogos = len(jogos)
         while njogos == jogos_por_pagina:
             url = url + '&page=' + str(page)
-            jogos_temp = extrair_jogos(url)
+            jogos_temp = extrair_jogos(url, driver)
             njogos = len(jogos_temp)
             page += 1
             jogos.extend(jogos_temp)

@@ -6,11 +6,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-def extrair_jogos(url):
+def extrair_jogos(url, driver):
 
 #   driver = webdriver.Chrome(r"C:\Users\Claudio\Google Drive\Python\chromedriver.exe")
 #    driver = webdriver.Chrome()
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(url)
     jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
     while len(jogos) == 0:

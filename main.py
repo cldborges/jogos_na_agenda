@@ -3,28 +3,42 @@
 
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
-from classes import *
+from classes import * 
 
 # id de competições precisam ser atualizadas todos os anos, times não
 corinthians_s20 = {'nome': 'Corinthians S20', 'tipo': 'time',
-                   'link': 'https://www.ogol.com.br/team_matches.php?id=27018&grp=1&epoca_id=151', 'colorId': 1}
-liga_dos_campeoes = {'nome': 'Liga dos Campeões', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'colorId': 9}
+                   'link': 'https://www.ogol.com.br/team_matches.php?id=27018', 'colorId': 1}
+liga_dos_campeoes = {'nome': 'Liga dos Campeões 2022/23', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'frequencia': 1, 'colorId': 9}
 corinthians = {'nome': 'Corinthians', 'tipo': 'time',
-                     'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1&epoca_id=151', 'colorId': 8}
-can = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=136090', 'colorId': 10}
+                     'link': 'https://www.ogol.com.br/team_matches.php?id=2234', 'colorId': 8}
+can = {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=162225', 'frequencia': 2, 'colorId': 10}
 selecao_brasileira = {'nome': 'Brasil', 'tipo': 'time',
-                      'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1&epoca_id=151', 'colorId': 5}
-mundial_de_clubes = {'nome': 'Mundial de Clubes', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'colorId': 9}
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=816', 'colorId': 5}
+mundial_de_clubes = {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'frequencia': 1, 'colorId': 9}
 corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
-                      'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151', 'colorId': 4}
-nations_league = {'nome': 'Uefa Nation League', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=161165', 'colorId': 9}
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=31546', 'colorId': 4}
+nations_league = {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=161164', 'frequencia': 2, 'colorId': 9}
+copa_america_f = {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'frequencia': 4, 'colorId': 3}
+copa_mundo = {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao',
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=132894', 'frequencia': 4, 'colorId': 6}
+barcelona = {'nome': 'Barcelona.', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=40', 'colorId': 11}
+real_madrid = {'nome': 'Real Madrid', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=50', 'colorId': 11}
 
-dados = (selecao_brasileira, liga_dos_campeoes, corinthians_s20, corinthians_fem, nations_league, corinthians)
-dados = (can, liga_dos_campeoes) # tem que ter 2 no mínimo
+
+classicos = ('Barcelona', 'Real Madrid', 'PSG')
+
+
+dados = (corinthians_s20, liga_dos_campeoes, corinthians, mundial_de_clubes, corinthians_fem, nations_league, copa_america_f)
+dados = (selecao_brasileira, corinthians_fem) #variaveis sem sufixo por último. Ex.: corinthians_fem, corinthians
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 for dado in dados:
     if dado['tipo'] == 'competicao':
@@ -32,14 +46,15 @@ for dado in dados:
     else:
         jogos_por_pagina = 40
     url = dado['link']
-    jogos = extrair_jogos(url)
+    jogos = extrair_jogos(url, driver)
     page = 2
     
     if len(jogos) == jogos_por_pagina:
         njogos = len(jogos)
         while njogos == jogos_por_pagina:
             url = url + '&page=' + str(page)
-            jogos_temp = extrair_jogos(url)
+            driver2 = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+            jogos_temp = extrair_jogos(url, driver2)
             njogos = len(jogos_temp)
             page += 1
             jogos.extend(jogos_temp)
@@ -89,8 +104,8 @@ for dado in dados:
         colorId = dado['colorId']
         sumario = time_casa + ' X ' + time_fora
         link_jogo = jogo.find_element(By.CSS_SELECTOR, 'td.result > a').get_attribute('href')
-        data_inicio = data_para_isoformat(data, hora, horas=-24)
-        data_final = data_para_isoformat(data, hora, horas=+24)
+        data_inicio = data_para_isoformat(data, hora, horas=-30)
+        data_final = data_para_isoformat(data, hora, horas=+30)
     
         eventos = listar_eventos(service, data_inicio, data_final)
         for evento in eventos:

@@ -5,10 +5,11 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from classes import *
 
+# id de competições precisam ser atualizadas todos os anos, times não
 corinthians_s20 = {'nome': 'Corinthians S20', 'tipo': 'time',
                    'link': 'https://www.ogol.com.br/team_matches.php?id=27018&grp=1&epoca_id=151', 'colorId': 1}
 liga_dos_campeoes = {'nome': 'Liga dos Campeões', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?fase_in=0&equipa=0&id_edicao=155920', 'colorId': 9}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'colorId': 9}
 corinthians = {'nome': 'Corinthians', 'tipo': 'time',
                      'link': 'https://www.ogol.com.br/team_matches.php?id=2234&grp=1&epoca_id=151', 'colorId': 8}
 can = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
@@ -16,14 +17,14 @@ can = {'nome': 'Copa Africana de Nações', 'tipo': 'competicao',
 selecao_brasileira = {'nome': 'Brasil', 'tipo': 'time',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=816&grp=1&epoca_id=151', 'colorId': 5}
 mundial_de_clubes = {'nome': 'Mundial de Clubes', 'tipo': 'competicao',
-                     'link': 'https://www.ogol.com.br/edition_matches.php?id=159598', 'colorId': 9}
+                     'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'colorId': 9}
 corinthians_fem = {'nome': 'Corinthians Fem.', 'tipo': 'time',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=31546&grp=1&epoca_id=151', 'colorId': 4}
 nations_league = {'nome': 'Uefa Nation League', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=161165', 'colorId': 9}
 
 dados = (selecao_brasileira, liga_dos_campeoes, corinthians_s20, corinthians_fem, nations_league, corinthians)
-dados = (nations_league, corinthians)
+dados = (can, liga_dos_campeoes) # tem que ter 2 no mínimo
 
 for dado in dados:
     if dado['tipo'] == 'competicao':

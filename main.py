@@ -26,17 +26,17 @@ copa_america_f = {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'frequencia': 4, 'colorId': 3}
 copa_mundo = {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao',
                      'link': 'https://www.ogol.com.br/edition_matches.php?id=132894', 'frequencia': 4, 'colorId': 6}
-barcelona = {'nome': 'Barcelona.', 'tipo': 'classico',
+barcelona = {'nome': 'Barcelona', 'tipo': 'classico',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=40', 'colorId': 11}
 real_madrid = {'nome': 'Real Madrid', 'tipo': 'classico',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=50', 'colorId': 11}
 
 
-classicos = ('Barcelona', 'Real Madrid', 'PSG')
+classicos = ('Barcelona', 'Real Madrid', 'PSG', 'Chelsea', 'Bayern München')
 
 
 dados = (corinthians_s20, liga_dos_campeoes, corinthians, mundial_de_clubes, corinthians_fem, nations_league, copa_america_f)
-dados = (selecao_brasileira, corinthians_fem) #variaveis sem sufixo por último. Ex.: corinthians_fem, corinthians
+dados = (real_madrid, barcelona) #variaveis com sufixo por último. Ex.: corinthians, corinthians_fem
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
@@ -81,7 +81,7 @@ for dado in dados:
             competicao = dado['nome']
             #div_tv = ''
     
-        if dado['tipo'] == 'time':
+        if dado['tipo'] == 'time' or dado['tipo'] == 'classico':
             mando = jogo.find_element(By.XPATH, 'td[4]').text
             if mando == '(C)':
                 time_casa = dado['nome']
@@ -94,6 +94,10 @@ for dado in dados:
             competicao = jogo.find_element(By.XPATH, '//*/td[7]/div/div[2]/a').text
             #div_tv = 'a > '
 
+        if dado['tipo'] == 'classico':
+            if time_fora not in classicos or dado['nome'] == time_fora:
+                continue
+    
         for div_tv in 'a > ', '', 'div > ':
             try:
                 tv = jogo.find_element(By.CSS_SELECTOR, f'td.double.right > {div_tv}div > img').get_attribute('title')

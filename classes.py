@@ -5,7 +5,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-import os
 
 def extrair_jogos(url, driver):
 
@@ -79,8 +78,9 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
             }
         }
 
-        event = service.events().insert(calendarId='primary', body=event).execute()
-        print('Evento criado: %s' % (event.get('htmlLink')))
+        # event = service.events().insert(calendarId='primary', body=event).execute()
+        # print('Evento criado: %s' % (event.get('htmlLink')))
+        print('Evento criado: ', sumario)
 
     except HttpError as error:
         print('Ocorreu um erro: %s' % error)

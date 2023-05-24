@@ -1,16 +1,13 @@
 # pip install python-dateutil
 
-from datetime import datetime, date
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from datetime import date
 from selenium.webdriver.common.by import By
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
 
 def extrair_jogos(url, driver):
 
-#   driver = webdriver.Chrome(r"C:\Users\Claudio\Google Drive\Python\chromedriver.exe")
-#    driver = webdriver.Chrome()
-    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(url)
     jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
     while len(jogos) == 0:
@@ -78,7 +75,7 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
             }
         }
 
-        # event = service.events().insert(calendarId='primary', body=event).execute()
+        event = service.events().insert(calendarId='primary', body=event).execute()
         # print('Evento criado: %s' % (event.get('htmlLink')))
         print('Evento criado: ', sumario)
 
@@ -87,10 +84,6 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
 
 
 def data_para_isoformat(data, hora, horas=0):
-
-
-    from datetime import datetime
-    from dateutil.relativedelta import relativedelta
 
     datat = data + ' ' + hora
     datafinal = datetime.strptime(datat, '%Y-%m-%d %H:%M')

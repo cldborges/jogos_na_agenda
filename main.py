@@ -1,6 +1,9 @@
 #pip install selenium
 #pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from classes import * 
@@ -30,13 +33,51 @@ barcelona = {'nome': 'Barcelona', 'tipo': 'classico',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=40', 'colorId': 11}
 real_madrid = {'nome': 'Real Madrid', 'tipo': 'classico',
                       'link': 'https://www.ogol.com.br/team_matches.php?id=50', 'colorId': 11}
+psg = {'nome': 'Paris SG', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=127', 'colorId': 11}
+bayern_munchen = {'nome': 'Bayern München', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=108', 'colorId': 11}
+atletico_madrid = {'nome': 'Atlético Madrid', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=39', 'colorId': 11}
+liverpool = {'nome': 'Liverpool', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=85', 'colorId': 11}
+manchester_city = {'nome': 'Manchester City', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=86', 'colorId': 11}
+manchester_united = {'nome': 'Manchester United', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=87', 'colorId': 11}
+chelsea = {'nome': 'Chelsea', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=81', 'colorId': 11}
+juventus = {'nome': 'Juventus', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=64', 'colorId': 11}
+napoli = {'nome': 'Napoli', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=3735', 'colorId': 11}
+internazionale = {'nome': 'Internazionale', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=63', 'colorId': 11}
+milan = {'nome': 'Milan', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=66', 'colorId': 11}
+argentina = {'nome': 'Argentina', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=814', 'colorId': 11}
+franca = {'nome': 'França', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=824', 'colorId': 11}
+inglaterra = {'nome': 'Inglaterra', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=826', 'colorId': 11}
+alemanha = {'nome': 'Alemanha', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=812', 'colorId': 11}
+portugal = {'nome': 'Portugal', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=811', 'colorId': 11}
+espanha = {'nome': 'Espanha', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=822', 'colorId': 11}
+italia = {'nome': 'Itália', 'tipo': 'classico',
+                      'link': 'https://www.ogol.com.br/team_matches.php?id=828', 'colorId': 11}
 
 
-classicos = ('Barcelona', 'Real Madrid', 'PSG', 'Chelsea', 'Bayern München')
+classicos = ('Barcelona', 'Real Madrid', 'Atlético Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 'Manchester City', 'Manchester United', 'Chelsea', 'Juventus', 
+             'Napoli','Internazionale', 'Milan', 'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália')
 
 
-dados = (corinthians_s20, liga_dos_campeoes, corinthians, mundial_de_clubes, corinthians_fem, nations_league, copa_america_f)
+dados = (corinthians, corinthians_s20, liga_dos_campeoes, mundial_de_clubes, corinthians_fem, nations_league, copa_america_f)
 dados = (real_madrid, barcelona) #variaveis com sufixo por último. Ex.: corinthians, corinthians_fem
+dados = (corinthians, corinthians_s20, liga_dos_campeoes, corinthians_fem, selecao_brasileira, barcelona, real_madrid)
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 

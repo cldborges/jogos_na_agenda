@@ -1,9 +1,8 @@
-# pip install python-dateutil
-
 from datetime import date
 from selenium.webdriver.common.by import By
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import easygui
 
 
 def extrair_jogos(url, driver):
@@ -11,8 +10,13 @@ def extrair_jogos(url, driver):
     driver.get(url)
     jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
     while len(jogos) == 0:
-        driver.refresh()
-        jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
+        try:
+            erro_ao_carregar = driver.find_element(By.CSS_SELECTOR, '#container > div.zz_error_message').text
+            if erro_ao_carregar != '':
+                driver.refresh()
+                jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
+        except:
+            break
     print(f'{len(jogos)} jogos extraídos')
     return jogos
 
@@ -77,7 +81,7 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
 
         event = service.events().insert(calendarId='primary', body=event).execute()
         # print('Evento criado: %s' % (event.get('htmlLink')))
-        print('Evento criado: ', sumario)
+        print(sumario, 'criado.')
 
     except HttpError as error:
         print('Ocorreu um erro: %s' % error)

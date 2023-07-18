@@ -2,7 +2,6 @@ from datetime import date
 from selenium.webdriver.common.by import By
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import easygui
 
 
 def extrair_jogos(url, driver):
@@ -61,9 +60,7 @@ def google_auth():
 def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId):
 
     from googleapiclient.errors import HttpError
-
     hoje = date.today().strftime("%d/%m/%Y")
-
     try:
         event = {
             'summary': sumario,
@@ -78,11 +75,9 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
                 'timeZone': 'America/Sao_Paulo',
             }
         }
-
         event = service.events().insert(calendarId='primary', body=event).execute()
         # print('Evento criado: %s' % (event.get('htmlLink')))
         print(sumario, 'criado.')
-
     except HttpError as error:
         print('Ocorreu um erro: %s' % error)
 

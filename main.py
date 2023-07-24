@@ -13,13 +13,14 @@ dados = (
         {'nome': 'Corinthians', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=2234', 'colorId': 8},
         {'nome': 'Corinthians S20', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=27018', 'colorId': 1},
         {'nome': 'Corinthians Fem.', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=31546', 'colorId': 4},
-        # {'nome': 'Liga dos Campeões 2022/23', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'frequencia': 1, 'colorId': 9},
-        # {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=162225', 'frequencia': 2, 'colorId': 10},
         {'nome': 'Brasil', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=816', 'colorId': 5},
-        # {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'frequencia': 1, 'colorId': 9},
-        # {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=161164', 'frequencia': 2, 'colorId': 9},
-        # {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'frequencia': 4, 'colorId': 3},
-        # {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=132894', 'frequencia': 4, 'colorId': 6},
+        {'nome': 'Liga dos Campeões 2022/23', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'frequencia': 1, 'colorId': 9},
+        {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=162225', 'frequencia': 2, 'colorId': 10},
+        {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'frequencia': 1, 'colorId': 9},
+        {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=161164', 'frequencia': 2, 'colorId': 9},
+        {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'frequencia': 4, 'colorId': 3},
+        {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=132894', 'frequencia': 4, 'colorId': 6},
+        {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=145950', 'frequencia': 4, 'colorId': 3},
         {'nome': 'Barcelona', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=40', 'colorId': 11},
         {'nome': 'Real Madrid', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=50', 'colorId': 11},
         {'nome': 'Paris SG', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=127', 'colorId': 11},
@@ -29,6 +30,8 @@ dados = (
         {'nome': 'Manchester City', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=86', 'colorId': 11},
         {'nome': 'Manchester United', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=87', 'colorId': 11},
         {'nome': 'Chelsea', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=81', 'colorId': 11},
+        {'nome': 'Arsenal', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=75', 'colorId': 11},
+        {'nome': 'Tottenham', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=153', 'colorId': 11},
         {'nome': 'Juventus', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=64', 'colorId': 11},
         {'nome': 'Napoli', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=3735', 'colorId': 11},
         {'nome': 'Internazionale', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=63', 'colorId': 11},
@@ -39,13 +42,13 @@ dados = (
         {'nome': 'Alemanha', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=812', 'colorId': 11},
         {'nome': 'Portugal', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=811', 'colorId': 11},
         {'nome': 'Espanha', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=822', 'colorId': 11},
-        {'nome': 'Itália', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=828', 'colorId': 11},
-        {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=145950', 'frequencia': 4, 'colorId': 3}
+        {'nome': 'Itália', 'tipo': 'classico', 'link': 'https://www.ogol.com.br/team_matches.php?id=828', 'colorId': 11}
         )
 
 
-classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 'Manchester City', 'Manchester United', 'Chelsea', 'Juventus', 
-             'Napoli','Internazionale', 'Milan', 'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália')
+classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 
+             'Manchester City', 'Manchester United', 'Chelsea', 'Arsenal', 'Tottenham', 'Juventus', 'Napoli','Internazionale', 'Milan', 
+             'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália')
 
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))

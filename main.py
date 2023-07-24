@@ -14,7 +14,7 @@ dados = (
         {'nome': 'Corinthians S20', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=27018', 'colorId': 1},
         {'nome': 'Corinthians Fem.', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=31546', 'colorId': 4},
         {'nome': 'Brasil', 'tipo': 'time', 'link': 'https://www.ogol.com.br/team_matches.php?id=816', 'colorId': 5},
-        {'nome': 'Liga dos Campeões 2022/23', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=166025', 'frequencia': 1, 'colorId': 9},
+        {'nome': 'Liga dos Campeões 2023/24', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=176177', 'frequencia': 1, 'colorId': 9},
         {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=162225', 'frequencia': 2, 'colorId': 10},
         {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'frequencia': 1, 'colorId': 9},
         {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=161164', 'frequencia': 2, 'colorId': 9},
@@ -104,7 +104,8 @@ for dado in dados:
             #     time_fora = 'Campo Neutro'
             data = jogo.find_element(By.CSS_SELECTOR, 'td.double').text
             fase = jogo.find_element(By.CSS_SELECTOR, 'td.away').text
-            competicao = jogo.find_element(By.XPATH, '//*/td[7]/div/div[2]/a').text
+            # competicao = jogo.find_element(By.XPATH, '//*/td[7]/div/div[2]/a').text
+            competicao = jogo.find_elements(By.CLASS_NAME, 'text')[1].text
             #div_tv = 'a > '
         if dado['tipo'] == 'classico':
             if time_fora not in classicos or dado['nome'] == time_fora:

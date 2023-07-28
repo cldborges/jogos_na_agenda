@@ -12,44 +12,50 @@ epoca = 153
 
 # id de competições precisam ser atualizadas na frequência delas, times não
 dados = (
-        # {'nome': 'Corinthians', 'tipo': 'time', 'equipe':  2234, 'colorId': 8},
-        # {'nome': 'Corinthians S20', 'tipo': 'time', 'equipe':  27018, 'colorId': 1},
-        # {'nome': 'Corinthians Fem.', 'tipo': 'time', 'equipe':  31546, 'colorId': 4},
-        # {'nome': 'Brasil', 'tipo': 'time', 'equipe':  816, 'colorId': 5},
-        # {'nome': 'Liga dos Campeões 2023/24', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=176177', 'frequencia': 1, 'colorId': 9},
-        # {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=162225', 'frequencia': 2, 'colorId': 10},
-        # {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=170592', 'frequencia': 1, 'colorId': 9},
-        # {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=161164', 'frequencia': 2, 'colorId': 9},
-        # {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=165255', 'frequencia': 4, 'colorId': 3},
-        # {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=132894', 'frequencia': 4, 'colorId': 6},
-        {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'link': 'https://www.ogol.com.br/edition_matches.php?id=145950', 'frequencia': 4, 'colorId': 3},
-        # {'nome': 'Barcelona', 'tipo': 'classico', 'equipe':  40, 'colorId': 11},
-        # {'nome': 'Real Madrid', 'tipo': 'classico', 'equipe':  50, 'colorId': 11},
-        # {'nome': 'Paris SG', 'tipo': 'classico', 'equipe':  127, 'colorId': 11},
-        # {'nome': 'Bayern München', 'tipo': 'classico', 'equipe':  108, 'colorId': 11, 'equipe': 108},
-        # {'nome': 'Atlético Madrid', 'tipo': 'classico', 'equipe':  39, 'colorId': 11},
-        # {'nome': 'Liverpool', 'tipo': 'classico', 'equipe':  85, 'colorId': 11, 'equipe': 85},
-        # {'nome': 'Manchester City', 'tipo': 'classico', 'equipe':  86, 'colorId': 11, 'equipe': 86},
-        # {'nome': 'Manchester United', 'tipo': 'classico', 'equipe':  87, 'colorId': 11},
-        # {'nome': 'Chelsea', 'tipo': 'classico', 'equipe':  81, 'colorId': 11},
-        # {'nome': 'Arsenal', 'tipo': 'classico', 'equipe':  75, 'colorId': 11},
-        # {'nome': 'Tottenham', 'tipo': 'classico', 'equipe':  153, 'colorId': 11},
-        # {'nome': 'Juventus', 'tipo': 'classico', 'equipe':  64, 'colorId': 11, 'equipe': 64},
-        # {'nome': 'Napoli', 'tipo': 'classico', 'equipe':  3735, 'colorId': 11},
-        # {'nome': 'Internazionale', 'tipo': 'classico', 'equipe':  63, 'colorId': 11},
-        # {'nome': 'Milan', 'tipo': 'classico', 'equipe':  66, 'colorId': 11},
-        # {'nome': 'Argentina', 'tipo': 'classico', 'equipe':  814, 'colorId': 11},
-        # {'nome': 'França', 'tipo': 'classico', 'equipe':  824, 'colorId': 11},
-        # {'nome': 'Inglaterra', 'tipo': 'classico', 'equipe':  826, 'colorId': 11},
-        # {'nome': 'Alemanha', 'tipo': 'classico', 'equipe':  812, 'colorId': 11},
-        # {'nome': 'Portugal', 'tipo': 'classico', 'equipe':  811, 'colorId': 11},
-        # {'nome': 'Espanha', 'tipo': 'classico', 'equipe':  822, 'colorId': 11},
-        {'nome': 'Itália', 'tipo': 'classico', 'equipe':  828, 'colorId': 11}
+        {'nome': 'Corinthians', 'tipo': 'time', 'equipe': 2234, 'colorId': 8},
+        {'nome': 'Corinthians S20', 'tipo': 'time', 'equipe': 27018, 'colorId': 1},
+        {'nome': 'Corinthians Fem.', 'tipo': 'time', 'equipe': 31546, 'colorId': 4},
+        {'nome': 'Brasil', 'tipo': 'time', 'equipe': 816, 'colorId': 5},
+        {'nome': 'Liga dos Campeões 2023/24', 'tipo': 'competicao', 'edicao': 176177, 'frequencia': 1, 'colorId': 9},
+        # {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'edicao': 162225, 'frequencia': 2, 'colorId': 10},
+        # {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'edicao': 170592, 'frequencia': 1, 'colorId': 9},
+        # {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'edicao': 161164, 'frequencia': 2, 'colorId': 9},
+        # {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao', 'edicao': 165255, 'frequencia': 4, 'colorId': 3},
+        # {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'edicao': 132894, 'frequencia': 4, 'colorId': 6},
+        {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'edicao' : 145950, 'frequencia': 4, 'colorId': 3},
+        {'nome': 'Barcelona', 'tipo': 'classico', 'equipe': 40, 'colorId': 11},
+        {'nome': 'Real Madrid', 'tipo': 'classico', 'equipe': 50, 'colorId': 11},
+        {'nome': 'Paris SG', 'tipo': 'classico', 'equipe': 127, 'colorId': 11},
+        {'nome': 'Bayern München', 'tipo': 'classico', 'equipe': 108, 'colorId': 11},
+        {'nome': 'Atlético Madrid', 'tipo': 'classico', 'equipe': 39, 'colorId': 11},
+        {'nome': 'Liverpool', 'tipo': 'classico', 'equipe': 85, 'colorId': 11},
+        {'nome': 'Manchester City', 'tipo': 'classico', 'equipe': 86, 'colorId': 11},
+        {'nome': 'Manchester United', 'tipo': 'classico', 'equipe': 87, 'colorId': 11},
+        {'nome': 'Chelsea', 'tipo': 'classico', 'equipe': 81, 'colorId': 11},
+        {'nome': 'Arsenal', 'tipo': 'classico', 'equipe': 75, 'colorId': 11},
+        {'nome': 'Tottenham', 'tipo': 'classico', 'equipe': 153, 'colorId': 11},
+        {'nome': 'Juventus', 'tipo': 'classico', 'equipe': 64, 'colorId': 11},
+        {'nome': 'Napoli', 'tipo': 'classico', 'equipe': 3735, 'colorId': 11},
+        {'nome': 'Internazionale', 'tipo': 'classico', 'equipe': 63, 'colorId': 11},
+        {'nome': 'Milan', 'tipo': 'classico', 'equipe': 66, 'colorId': 11},
+        {'nome': 'Al Nassr', 'tipo': 'classico', 'equipe': 4042, 'colorId': 11},
+        {'nome': 'Al-Ahli Jeddah', 'tipo': 'classico', 'equipe': 7816, 'colorId': 11},
+        {'nome': 'Al-Ittihad Jeddah', 'tipo': 'classico', 'equipe': 5977, 'colorId': 11},
+        {'nome': 'Al Hilal', 'tipo': 'classico', 'equipe': 4043, 'colorId': 11},
+        {'nome': 'Inter Miami CF', 'tipo': 'classico', 'equipe': 231636, 'colorId': 11},
+        {'nome': 'Argentina', 'tipo': 'classico', 'equipe': 814, 'colorId': 11},
+        {'nome': 'França', 'tipo': 'classico', 'equipe': 824, 'colorId': 11},
+        {'nome': 'Inglaterra', 'tipo': 'classico', 'equipe': 826, 'colorId': 11},
+        {'nome': 'Alemanha', 'tipo': 'classico', 'equipe': 812, 'colorId': 11},
+        {'nome': 'Portugal', 'tipo': 'classico', 'equipe': 811, 'colorId': 11},
+        {'nome': 'Espanha', 'tipo': 'classico', 'equipe': 822, 'colorId': 11},
+        {'nome': 'Itália', 'tipo': 'classico', 'equipe': 828, 'colorId': 11}
 )
 
 
 classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 
-             'Manchester City', 'Manchester United', 'Chelsea', 'Arsenal', 'Tottenham', 'Juventus', 'Napoli','Internazionale', 'Milan', 
+             'Manchester City', 'Manchester United', 'Chelsea', 'Arsenal', 'Tottenham', 'Juventus', 'Napoli','Internazionale', 'Milan',
+             'Al Nassr', 'Al-Ahli Jeddah', 'Al-Ittihad Jeddah', 'Al Hilal', 'Inter Miami CF'
              'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália')
 
 
@@ -62,7 +68,8 @@ for dado in dados:
     print(dado['nome'])
     if dado['tipo'] == 'competicao':
         jogos_por_pagina = 50
-        url = dado['link']
+        # url = dado['link']
+        url = f'https://www.ogol.com.br/edition_matches.php?id={dado["edicao"]}'
     else:
         jogos_por_pagina = 40
         url = f'https://www.ogol.com.br/team_matches.php?grp=0&ond=&epoca_id={epoca}&compet_id_jogos=0&ved=&epoca_id={epoca}&comfim=0&id={dado["equipe"]}&equipa_1={dado["equipe"]}&menu=allmatches'
@@ -81,7 +88,7 @@ for dado in dados:
             jogos.extend(jogos_temp)
         print(f'{len(jogos)} jogos no total')
     service = google_auth()
-    for jogo in jogos:  
+    for jogo in jogos: 
         resultado = jogo.find_element(By.CSS_SELECTOR, 'td.result').text
         if resultado != '-' and resultado != 'vs':
             continue

@@ -9,43 +9,44 @@ from selenium.common.exceptions import *
 from classes import *
 
 epoca = 153
-
+    
 # id de competições precisam ser atualizadas na frequência delas, times não
 dados = (
-        {'nome': 'Corinthians', 'tipo': 'time', 'equipe': 2234, 'colorId': 8},
-        {'nome': 'Corinthians S20', 'tipo': 'time', 'equipe': 27018, 'colorId': 1},
-        {'nome': 'Corinthians Fem.', 'tipo': 'time', 'equipe': 31546, 'colorId': 4},
-        {'nome': 'Brasil', 'tipo': 'time', 'equipe': 816, 'colorId': 5},
-        {'nome': 'Liga dos Campeões 2023/24', 'tipo': 'competicao', 'edicao': 176177, 'frequencia': 1, 'colorId': 9},
+        # {'nome': 'Corinthians', 'tipo': 'time', 'equipe': 2234, 'colorId': 8},
+        # {'nome': 'Corinthians S20', 'tipo': 'time', 'equipe': 27018, 'colorId': 1},
+        # {'nome': 'Corinthians Fem.', 'tipo': 'time', 'equipe': 31546, 'colorId': 4},
+        # {'nome': 'Brasil', 'tipo': 'time', 'equipe': 816, 'colorId': 5},
+        # {'nome': 'Vasco', 'tipo': 'time', 'equipe': 2258, 'colorId': 9},
+        # {'nome': 'Liga dos Campeões 2023/24', 'tipo': 'competicao', 'edicao': 176177, 'frequencia': 1, 'colorId': 9},
         # {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'edicao': 162225, 'frequencia': 2, 'colorId': 10},
         # {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'edicao': 170592, 'frequencia': 1, 'colorId': 9},
         # {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'edicao': 161164, 'frequencia': 2, 'colorId': 9},
         # {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao', 'edicao': 165255, 'frequencia': 4, 'colorId': 3},
         # {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'edicao': 132894, 'frequencia': 4, 'colorId': 6},
-        {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'edicao' : 145950, 'frequencia': 4, 'colorId': 3},
-        {'nome': 'Barcelona', 'tipo': 'classico', 'equipe': 40, 'colorId': 11},
+        # {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'edicao' : 145950, 'frequencia': 4, 'colorId': 3},
+        # {'nome': 'Barcelona', 'tipo': 'classico', 'equipe': 40, 'colorId': 11},
         {'nome': 'Real Madrid', 'tipo': 'classico', 'equipe': 50, 'colorId': 11},
         {'nome': 'Paris SG', 'tipo': 'classico', 'equipe': 127, 'colorId': 11},
         {'nome': 'Bayern München', 'tipo': 'classico', 'equipe': 108, 'colorId': 11},
         {'nome': 'Atlético Madrid', 'tipo': 'classico', 'equipe': 39, 'colorId': 11},
-        {'nome': 'Liverpool', 'tipo': 'classico', 'equipe': 85, 'colorId': 11},
+        # {'nome': 'Liverpool', 'tipo': 'classico', 'equipe': 85, 'colorId': 11},
         {'nome': 'Manchester City', 'tipo': 'classico', 'equipe': 86, 'colorId': 11},
         {'nome': 'Manchester United', 'tipo': 'classico', 'equipe': 87, 'colorId': 11},
-        {'nome': 'Chelsea', 'tipo': 'classico', 'equipe': 81, 'colorId': 11},
-        {'nome': 'Arsenal', 'tipo': 'classico', 'equipe': 75, 'colorId': 11},
-        {'nome': 'Tottenham', 'tipo': 'classico', 'equipe': 153, 'colorId': 11},
-        {'nome': 'Juventus', 'tipo': 'classico', 'equipe': 64, 'colorId': 11},
-        {'nome': 'Napoli', 'tipo': 'classico', 'equipe': 3735, 'colorId': 11},
-        {'nome': 'Internazionale', 'tipo': 'classico', 'equipe': 63, 'colorId': 11},
-        {'nome': 'Milan', 'tipo': 'classico', 'equipe': 66, 'colorId': 11},
+        # {'nome': 'Chelsea', 'tipo': 'classico', 'equipe': 81, 'colorId': 11},
+        # {'nome': 'Arsenal', 'tipo': 'classico', 'equipe': 75, 'colorId': 11},
+        # {'nome': 'Tottenham', 'tipo': 'classico', 'equipe': 92, 'colorId': 11},
+        # {'nome': 'Juventus', 'tipo': 'classico', 'equipe': 64, 'colorId': 11},
+        # {'nome': 'Napoli', 'tipo': 'classico', 'equipe': 3735, 'colorId': 11},
+        # {'nome': 'Internazionale', 'tipo': 'classico', 'equipe': 63, 'colorId': 11},
+        # {'nome': 'Milan', 'tipo': 'classico', 'equipe': 66, 'colorId': 11},
         {'nome': 'Al Nassr', 'tipo': 'classico', 'equipe': 4042, 'colorId': 11},
         {'nome': 'Al-Ahli Jeddah', 'tipo': 'classico', 'equipe': 7816, 'colorId': 11},
         {'nome': 'Al-Ittihad Jeddah', 'tipo': 'classico', 'equipe': 5977, 'colorId': 11},
         {'nome': 'Al Hilal', 'tipo': 'classico', 'equipe': 4043, 'colorId': 11},
         {'nome': 'Inter Miami CF', 'tipo': 'classico', 'equipe': 231636, 'colorId': 11},
-        {'nome': 'Argentina', 'tipo': 'classico', 'equipe': 814, 'colorId': 11},
+        # {'nome': 'Argentina', 'tipo': 'classico', 'equipe': 814, 'colorId': 11},
         {'nome': 'França', 'tipo': 'classico', 'equipe': 824, 'colorId': 11},
-        {'nome': 'Inglaterra', 'tipo': 'classico', 'equipe': 826, 'colorId': 11},
+        # {'nome': 'Inglaterra', 'tipo': 'classico', 'equipe': 826, 'colorId': 11},
         {'nome': 'Alemanha', 'tipo': 'classico', 'equipe': 812, 'colorId': 11},
         {'nome': 'Portugal', 'tipo': 'classico', 'equipe': 811, 'colorId': 11},
         {'nome': 'Espanha', 'tipo': 'classico', 'equipe': 822, 'colorId': 11},
@@ -72,13 +73,18 @@ for dado in dados:
         url = f'https://www.ogol.com.br/edition_matches.php?id={dado["edicao"]}'
     else:
         jogos_por_pagina = 40
-        url = f'https://www.ogol.com.br/team_matches.php?grp=0&ond=&epoca_id={epoca}&compet_id_jogos=0&ved=&epoca_id={epoca}&comfim=0&id={dado["equipe"]}&equipa_1={dado["equipe"]}&menu=allmatches'
+        # url = f'https://www.ogol.com.br/team_matches.php?grp=0&ond=&epoca_id={epoca}&compet_id_jogos=0&ved=&epoca_id={epoca}&comfim=0&id={dado["equipe"]}&equipa_1={dado["equipe"]}&menu=allmatches'
+        equipe = dado['nome'].lower()
+        if ' ' in equipe:
+            equipe = equipe.replace(' ', '-')
+        url = f'https://www.ogol.com.br/equipe/{equipe}/todos-os-jogos'
     jogos = extrair_jogos(url, driver)
     page = 2
     if len(jogos) == jogos_por_pagina:
         njogos = len(jogos)
         while njogos == jogos_por_pagina:
-            url = url + '&page=' + str(page)
+            # url = url + '&page=' + str(page)
+            url = url + '?page=' + str(page)
             driver2 = webdriver.Chrome()
             # driver2 = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
             driver2.minimize_window()
@@ -133,7 +139,7 @@ for dado in dados:
         data_final = data_para_isoformat(data, hora, horas=+30)
         eventos = listar_eventos(service, data_inicio, data_final)
         for evento in eventos:
-            if time_casa + ' X' in evento[0] or 'X ' + time_fora in evento[0] or 'Vencedor' in evento[0]:
+            if time_casa + ' X' in evento[0] or 'X ' + time_fora in evento[0] or 'Vencedor' in evento[0] or 'Winner' in evento[0] or 'Loser' in evento[0]:
                 excluirEvento(service, evento[1])
                 print(f'{evento[0]} excluído.')
         data_inicio = data_para_isoformat(data, hora)

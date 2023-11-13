@@ -3,17 +3,20 @@ from classes import *
 from selenium.common.exceptions import *
 from datetime import datetime, date
 
-print(date.today().strftime("%d/%m/%Y"))
+# print(date.today().strftime("%d/%m/%Y"))
 
 
-epoca = 153
+# epoca = 153
 
-links_base = (
-    {'times' : 'https://www.ogol.com.br/team_matches.php?grp=0&ond=&epoca_id=153&compet_id_jogos=0&ved=&epoca_id={epoca}}&comfim=0&id=86&equipa_1=86&menu=allmatches'}
-    )
+# links_base = (
+#     {'times' : 'https://www.ogol.com.br/team_matches.php?grp=0&ond=&epoca_id=153&compet_id_jogos=0&ved=&epoca_id={epoca}}&comfim=0&id=86&equipa_1=86&menu=allmatches'}
+#     )
 
-print(links_base['times'])
+# print(links_base['times'])
 
+teste = 'Teste 2'
+teste = teste.replace(' ', '-')
+print(teste)
 
 
 '''service = google_auth()

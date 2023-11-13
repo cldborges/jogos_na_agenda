@@ -5,7 +5,6 @@ from dateutil.relativedelta import relativedelta
 
 
 def extrair_jogos(url, driver):
-
     driver.get(url)
     jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
     while len(jogos) == 0:
@@ -58,7 +57,6 @@ def google_auth():
 
 
 def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId):
-
     from googleapiclient.errors import HttpError
     hoje = date.today().strftime("%d/%m/%Y")
     try:
@@ -83,7 +81,6 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
 
 
 def data_para_isoformat(data, hora, horas=0):
-
     datat = data + ' ' + hora
     datafinal = datetime.strptime(datat, '%Y-%m-%d %H:%M')
     if horas != 0:
@@ -93,7 +90,6 @@ def data_para_isoformat(data, hora, horas=0):
 
 
 def listar_eventos(service, data_inicio, data_final):
-
     eventos = []
     events = service.events().list(calendarId='primary', maxAttendees=5, timeMin=data_inicio, timeMax=data_final).execute()
     for event in events['items']:

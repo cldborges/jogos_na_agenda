@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from classes import *
+from unidecode import unidecode
 
 epoca = 153
     
@@ -25,13 +26,13 @@ dados = (
         # {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'edicao': 132894, 'frequencia': 4, 'colorId': 6},
         # {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'edicao' : 145950, 'frequencia': 4, 'colorId': 3},
         # {'nome': 'Barcelona', 'tipo': 'classico', 'equipe': 40, 'colorId': 11},
-        {'nome': 'Real Madrid', 'tipo': 'classico', 'equipe': 50, 'colorId': 11},
-        {'nome': 'Paris SG', 'tipo': 'classico', 'equipe': 127, 'colorId': 11},
+        # {'nome': 'Real Madrid', 'tipo': 'classico', 'equipe': 50, 'colorId': 11},
+        # {'nome': 'Paris SG', 'tipo': 'classico', 'equipe': 127, 'colorId': 11},
         {'nome': 'Bayern München', 'tipo': 'classico', 'equipe': 108, 'colorId': 11},
-        {'nome': 'Atlético Madrid', 'tipo': 'classico', 'equipe': 39, 'colorId': 11},
+        {'nome': 'Atlético de Madrid', 'tipo': 'classico', 'equipe': 39, 'colorId': 11},
         # {'nome': 'Liverpool', 'tipo': 'classico', 'equipe': 85, 'colorId': 11},
-        {'nome': 'Manchester City', 'tipo': 'classico', 'equipe': 86, 'colorId': 11},
-        {'nome': 'Manchester United', 'tipo': 'classico', 'equipe': 87, 'colorId': 11},
+        # {'nome': 'Manchester City', 'tipo': 'classico', 'equipe': 86, 'colorId': 11},
+        # {'nome': 'Manchester United', 'tipo': 'classico', 'equipe': 87, 'colorId': 11},
         # {'nome': 'Chelsea', 'tipo': 'classico', 'equipe': 81, 'colorId': 11},
         # {'nome': 'Arsenal', 'tipo': 'classico', 'equipe': 75, 'colorId': 11},
         # {'nome': 'Tottenham', 'tipo': 'classico', 'equipe': 92, 'colorId': 11},
@@ -39,14 +40,14 @@ dados = (
         # {'nome': 'Napoli', 'tipo': 'classico', 'equipe': 3735, 'colorId': 11},
         # {'nome': 'Internazionale', 'tipo': 'classico', 'equipe': 63, 'colorId': 11},
         # {'nome': 'Milan', 'tipo': 'classico', 'equipe': 66, 'colorId': 11},
-        {'nome': 'Al Nassr', 'tipo': 'classico', 'equipe': 4042, 'colorId': 11},
-        {'nome': 'Al-Ahli Jeddah', 'tipo': 'classico', 'equipe': 7816, 'colorId': 11},
-        {'nome': 'Al-Ittihad Jeddah', 'tipo': 'classico', 'equipe': 5977, 'colorId': 11},
-        {'nome': 'Al Hilal', 'tipo': 'classico', 'equipe': 4043, 'colorId': 11},
-        {'nome': 'Inter Miami CF', 'tipo': 'classico', 'equipe': 231636, 'colorId': 11},
+        # {'nome': 'Al Nassr', 'tipo': 'classico', 'equipe': 4042, 'colorId': 11},
+        # {'nome': 'Al-Ahli Jeddah', 'tipo': 'classico', 'equipe': 7816, 'sub': 7816, 'colorId': 11},
+        # {'nome': 'Al-Ittihad Jeddah', 'tipo': 'classico', 'equipe': 5977, 'sub': 5977, 'colorId': 11},
+        # {'nome': 'Al Hilal', 'tipo': 'classico', 'equipe': 4043, 'colorId': 11},
+        # {'nome': 'Inter Miami CF', 'tipo': 'classico', 'equipe': 231636, 'colorId': 11},
         # {'nome': 'Argentina', 'tipo': 'classico', 'equipe': 814, 'colorId': 11},
         {'nome': 'França', 'tipo': 'classico', 'equipe': 824, 'colorId': 11},
-        # {'nome': 'Inglaterra', 'tipo': 'classico', 'equipe': 826, 'colorId': 11},
+        {'nome': 'Inglaterra', 'tipo': 'classico', 'equipe': 826, 'colorId': 11},
         {'nome': 'Alemanha', 'tipo': 'classico', 'equipe': 812, 'colorId': 11},
         {'nome': 'Portugal', 'tipo': 'classico', 'equipe': 811, 'colorId': 11},
         {'nome': 'Espanha', 'tipo': 'classico', 'equipe': 822, 'colorId': 11},
@@ -54,11 +55,12 @@ dados = (
 )
 
 
-classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 
+classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético de Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 
              'Manchester City', 'Manchester United', 'Chelsea', 'Arsenal', 'Tottenham', 'Juventus', 'Napoli','Internazionale', 'Milan',
              'Al Nassr', 'Al-Ahli Jeddah', 'Al-Ittihad Jeddah', 'Al Hilal', 'Inter Miami CF'
              'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália')
 
+# caracteres_especiais = ((' ', '-'), ('é', 'e'), ('ü', 'u'), ('ç', 'c'))
 
 driver = webdriver.Chrome()
 # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -77,7 +79,11 @@ for dado in dados:
         equipe = dado['nome'].lower()
         if ' ' in equipe:
             equipe = equipe.replace(' ', '-')
-        url = f'https://www.ogol.com.br/equipe/{equipe}/todos-os-jogos'
+        equipe = unidecode(equipe)
+        if 'sub' in dado.keys():
+            url = f'https://www.ogol.com.br/equipe/{equipe}/{dado["sub"]}/todos-os-jogos'
+        else:
+            url = f'https://www.ogol.com.br/equipe/{equipe}/todos-os-jogos'
     jogos = extrair_jogos(url, driver)
     page = 2
     if len(jogos) == jogos_por_pagina:

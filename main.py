@@ -79,7 +79,7 @@ for dado in dados:
             competicao_url = competicao_url.replace('/', '-')
         
         # 'https://www.ogol.com.br/edicao/liga-dos-campeoes-2023-24/176177/calendario'
-        url = f'https://www.ogol.com.br/edicao/{competicao_url}/{dado['edicao']}/calendario'
+        url = f'https://www.ogol.com.br/edicao/{competicao_url}/{dado["edicao"]}/calendario'
         # url = f'https://www.ogol.com.br/edition_matches.php?id={dado["edicao"]}/calendario'
     else:
         jogos_por_pagina = 40

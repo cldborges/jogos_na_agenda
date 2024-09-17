@@ -71,7 +71,13 @@ def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv
             'end': {
                 'dateTime': data_final,
                 'timeZone': 'America/Sao_Paulo',
-            }
+            },
+            'reminders': {
+                'useDefault': False,
+                'overrides': [
+                    {'method': 'popup', 'minutes': 5}, {'method': 'popup', 'minutes': 30}, {'method': 'email', 'minutes': 60}
+                ],
+            },
         }
         event = service.events().insert(calendarId='primary', body=event).execute()
         # print('Evento criado: %s' % (event.get('htmlLink')))
@@ -89,7 +95,7 @@ def data_para_isoformat(data, hora, horas=0):
     return datafinal.isoformat() + '-03:00'
 
 
-def listar_eventos(service, data_inicio, data_final):
+def old_listar_eventos(service, data_inicio, data_final):
     eventos = []
     events = service.events().list(calendarId='primary', maxAttendees=5, timeMin=data_inicio, timeMax=data_final).execute()
     for event in events['items']:
@@ -100,3 +106,26 @@ def listar_eventos(service, data_inicio, data_final):
 
 def excluirEvento(service, idEvento):
     service.events().delete(calendarId='primary', eventId=idEvento).execute()
+
+
+def listar_eventos(service, data_inicio, data_final):
+    eventos = []
+    page_token = None
+
+    while True:
+        events = service.events().list(
+            calendarId='primary',
+            maxResults=100,  # Ajuste conforme necessário
+            timeMin=data_inicio,
+            timeMax=data_final,
+            pageToken=page_token
+        ).execute()
+
+        for event in events['items']:
+            eventos.append((event['summary'], event['id']))
+
+        page_token = events.get('nextPageToken')
+        if not page_token:
+            break
+
+    return eventos

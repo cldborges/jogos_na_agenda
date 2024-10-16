@@ -52,14 +52,16 @@ dados = (
         {'nome': 'Alemanha', 'tipo': 'classico', 'equipe': 812, 'colorId': 11},
         {'nome': 'Portugal', 'tipo': 'classico', 'equipe': 811, 'colorId': 11},
         {'nome': 'Espanha', 'tipo': 'classico', 'equipe': 822, 'colorId': 11},
-        {'nome': 'Itália', 'tipo': 'classico', 'equipe': 828, 'colorId': 11}
+        {'nome': 'Itália', 'tipo': 'classico', 'equipe': 828, 'colorId': 11},
+        {'nome': 'Holanda', 'tipo': 'classico', 'equipe': 0, 'colorId': 11},
+        {'nome': 'Bélgica', 'tipo': 'classico', 'equipe': 0, 'colorId': 11}
 )
 
 
 classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético de Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 
              'Manchester City', 'Manchester United', 'Chelsea', 'Arsenal', 'Tottenham', 'Juventus', 'Napoli','Internazionale', 'Milan',
              'Al Nassr', 'Al-Ahli Jeddah', 'Al-Ittihad Jeddah', 'Al Hilal', 'Inter Miami CF'
-             'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália')
+             'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália', 'Holanda', 'Bélgica')
 
 # caracteres_especiais = ((' ', '-'), ('é', 'e'), ('ü', 'u'), ('ç', 'c'))
 
@@ -142,7 +144,8 @@ for dado in dados:
         if dado['tipo'] == 'classico':
             if time_fora not in classicos or dado['nome'] == time_fora:
                 continue
-        for div_tv in 'a > ', '', 'div > ':
+        # lista de possíveis tags antes da tag do canal de transmissão
+        for div_tv in 'a > ', '', 'div > ', 'div > a > ':
             try:
                 tv = jogo.find_element(By.CSS_SELECTOR, f'td.double.right > {div_tv}div > img').get_attribute('title')
                 print(f'{tv}')

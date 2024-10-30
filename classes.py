@@ -4,6 +4,13 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 
+def link_uol():
+    url_base = 'https://www.uol.com.br/esporte/futebol/central-de-jogos'
+    # url_base = 'https://www.uol.com.br/esporte/futebol/central-de-jogos/#/30-10-2024'
+    url = url_base
+    return url
+
+
 def extrair_jogos(url, driver):
     driver.get(url)
     jogos = driver.find_elements(By.CSS_SELECTOR, '.parent')
@@ -59,11 +66,12 @@ def google_auth():
 def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId):
     from googleapiclient.errors import HttpError
     hoje = date.today().strftime("%d/%m/%Y")
+    uol = link_uol()
     try:
         event = {
             'summary': sumario,
             'colorId': colorId,
-            'description': f'{competicao}: {fase}\n{tv}\n\n\n\n\n{link_jogo}\nAtualizado em: {hoje}',
+            'description': f'{competicao}: {fase}\n{tv}\n\n\n{uol}\n\n{link_jogo}\nAtualizado em: {hoje}',
             'start': {
                 'dateTime': data_inicio,
                 'timeZone': 'America/Sao_Paulo',

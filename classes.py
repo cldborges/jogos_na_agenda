@@ -10,6 +10,15 @@ def link_uol():
     url = url_base
     return url
 
+def data_en__data_pt(data):
+    # Converter para o objeto datetime
+    data_formatada = datetime.strptime(data, '%Y-%m-%d')
+
+    # Formatar para o padrão brasileiro
+    data_pt = data_formatada.strftime('%d-%m-%Y')
+
+    return data_pt
+
 
 def extrair_jogos(url, driver):
     driver.get(url)
@@ -63,9 +72,10 @@ def google_auth():
     return service
 
 
-def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId):
+def criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId, data):
     from googleapiclient.errors import HttpError
     hoje = date.today().strftime("%d/%m/%Y")
+    data_pt = data
     uol = link_uol()
     try:
         event = {

@@ -8,8 +8,6 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
 from classes import *
 from unidecode import unidecode
-
-# epoca = 153
     
 # id de competições precisam ser atualizadas na frequência delas, times não
 dados = (
@@ -18,6 +16,7 @@ dados = (
         {'nome': 'Corinthians Fem.', 'tipo': 'time', 'equipe': 31546, 'sub': 31546, 'colorId': 4},
         {'nome': 'Brasil', 'tipo': 'time', 'equipe': 816, 'colorId': 5},
         {'nome': 'Liga dos Campeões 2024/25', 'tipo': 'competicao', 'edicao': 187408, 'frequencia': 1, 'colorId': 9},
+        {'nome': 'Fifa Intercontinental Cup 2024', 'tipo': 'competicao', 'edicao': 189570, 'frequencia': 1, 'colorId': 6},
         # {'nome': 'Euro 2024', 'tipo': 'competicao', 'edicao': 168932, 'frequencia': 4, 'colorId': 7},
         # {'nome': 'Copa América 2024', 'tipo': 'competicao', 'edicao': 181194, 'frequencia': 4, 'colorId': 2},
         # {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'edicao': 162225, 'frequencia': 2, 'colorId': 10},
@@ -163,4 +162,4 @@ for dado in dados:
                 print(f'{evento[0]} excluído.')
         data_inicio = data_para_isoformat(data, hora)
         data_final = data_para_isoformat(data, hora, horas=+2)
-        criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId)
+        criar_evento(service, sumario, data_inicio, data_final, competicao, fase, tv, link_jogo, colorId, data)

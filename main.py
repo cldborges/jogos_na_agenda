@@ -10,18 +10,19 @@ from classes import *
 from unidecode import unidecode
     
 # id de competições precisam ser atualizadas na frequência delas, times não
+# Nas competições, o dado que direciona para a competição não é o nome, é o campo edição
 dados = (
         {'nome': 'Corinthians', 'tipo': 'time', 'equipe': 2234, 'colorId': 8},
         {'nome': 'Corinthians S20', 'tipo': 'time', 'equipe': 27018, 'sub': 27018, 'colorId': 1},
         {'nome': 'Corinthians Fem.', 'tipo': 'time', 'equipe': 31546, 'sub': 31546, 'colorId': 4},
         {'nome': 'Brasil', 'tipo': 'time', 'equipe': 816, 'colorId': 5},
         {'nome': 'Liga dos Campeões 2024/25', 'tipo': 'competicao', 'edicao': 187408, 'frequencia': 1, 'colorId': 9},
-        {'nome': 'Fifa Intercontinental Cup 2024', 'tipo': 'competicao', 'edicao': 189570, 'frequencia': 1, 'colorId': 6},
+        # {'nome': 'Fifa Intercontinental Cup 2024', 'tipo': 'competicao', 'edicao': 189570, 'frequencia': 1, 'colorId': 6},
         # {'nome': 'Euro 2024', 'tipo': 'competicao', 'edicao': 168932, 'frequencia': 4, 'colorId': 7},
         # {'nome': 'Copa América 2024', 'tipo': 'competicao', 'edicao': 181194, 'frequencia': 4, 'colorId': 2},
         # {'nome': 'Copa Africana de Nações 2023', 'tipo': 'competicao', 'edicao': 162225, 'frequencia': 2, 'colorId': 10},
-        # {'nome': 'Mundial de Clubes 2022', 'tipo': 'competicao', 'edicao': 170592, 'frequencia': 1, 'colorId': 9},
-        # {'nome': 'Uefa Nation League 2022', 'tipo': 'competicao', 'edicao': 161164, 'frequencia': 2, 'colorId': 9},
+        {'nome': 'Mundial de Clubes 2025', 'tipo': 'competicao', 'edicao': 186041, 'frequencia': 1, 'colorId': 9},
+        {'nome': 'UEFA Nations League 2024/25', 'tipo': 'competicao', 'edicao': 193042, 'frequencia': 2, 'colorId': 9},
         # {'nome': 'Copa América Feminina 2022', 'tipo': 'competicao', 'edicao': 165255, 'frequencia': 4, 'colorId': 3},
         # {'nome': 'Copa do Mundo 2022', 'tipo': 'competicao', 'edicao': 132894, 'frequencia': 4, 'colorId': 6},
         # {'nome': 'Copa do Mundo Feminina 2023', 'tipo': 'competicao', 'edicao' : 145950, 'frequencia': 4, 'colorId': 3},
@@ -53,14 +54,15 @@ dados = (
         {'nome': 'Espanha', 'tipo': 'classico', 'equipe': 822, 'colorId': 11},
         {'nome': 'Itália', 'tipo': 'classico', 'equipe': 828, 'colorId': 11},
         {'nome': 'Holanda', 'tipo': 'classico', 'equipe': 0, 'colorId': 11},
-        {'nome': 'Bélgica', 'tipo': 'classico', 'equipe': 0, 'colorId': 11}
+        {'nome': 'Bélgica', 'tipo': 'classico', 'equipe': 0, 'colorId': 11},
+        {'nome': 'Países Baixos', 'tipo': 'classico', 'equipe': 0, 'colorId': 11}
 )
 
 
 classicos = ('Campo Neutro', 'Barcelona', 'Real Madrid', 'Atlético de Madrid', 'Paris SG', 'Bayern München', 'Liverpool', 
              'Manchester City', 'Manchester United', 'Chelsea', 'Arsenal', 'Tottenham', 'Juventus', 'Napoli','Internazionale', 'Milan',
              'Al Nassr', 'Al-Ahli Jeddah', 'Al-Ittihad Jeddah', 'Al Hilal', 'Inter Miami CF'
-             'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália', 'Holanda', 'Bélgica')
+             'Argentina', 'França', 'Inglaterra', 'Alemanha', 'Portugal', 'Espanha', 'Itália', 'Holanda', 'Bélgica', 'Países Baixos')
 
 # caracteres_especiais = ((' ', '-'), ('é', 'e'), ('ü', 'u'), ('ç', 'c'))
 
@@ -152,6 +154,10 @@ for dado in dados:
                 pass
         colorId = dado['colorId']
         sumario = time_casa + ' X ' + time_fora
+        if fase == 'F':
+            sumario = '🏆 ' + sumario
+        elif fase == 'SF' or fase == 'QF' or fase == '1/8':
+            sumario = '☠️ ' + sumario
         link_jogo = jogo.find_element(By.CSS_SELECTOR, 'td.result > a').get_attribute('href')
         data_inicio = data_para_isoformat(data, hora, horas=-30)
         data_final = data_para_isoformat(data, hora, horas=+30)
